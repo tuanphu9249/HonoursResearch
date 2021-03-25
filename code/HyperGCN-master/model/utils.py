@@ -180,6 +180,7 @@ def adjacency(edges, weights, n):
     """
     
     dictionary = {tuple(item): index for index, item in enumerate(edges)}
+    # print(dictionary)
     edges = [list(itm) for itm in dictionary.keys()]   
     organised = []
 
@@ -189,11 +190,24 @@ def adjacency(edges, weights, n):
         organised.append(w)
 
     edges, weights = np.array(edges), np.array(organised)
+    # print("weights here")
+    # print(weights)
+    # print(weights.shape)
     adj = sp.coo_matrix((weights, (edges[:, 0], edges[:, 1])), shape=(n, n), dtype=np.float32)
     adj = adj + sp.eye(n)
 
+    print("adj matrix here")
+    print(type(adj))
+    print(adj)
+
+    ########## TODO: add weights according to newly defined function here. ####################
+
+
+
+    #######################
     A = symnormalise(sp.csr_matrix(adj, dtype=np.float32))
     A = ssm2tst(A)
+    # print("A hereeeeeeeeeee")
     return A
 
 

@@ -34,6 +34,7 @@ class HyperGCN(nn.Module):
         self.layers = nn.ModuleList([utils.HyperGraphConvolution(h[i], h[i+1], reapproximate, cuda) for i in range(l)])
         self.do, self.l = args.dropout, args.depth
         self.structure, self.m = structure, args.mediators
+        # print(self.structure)
 
 
 
